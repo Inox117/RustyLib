@@ -5,7 +5,6 @@ use rocket::{delete, get, post, put};
 use rocket::http::Status;
 use rocket_contrib::json::Json;
 use rocket::response::status;
-use rocket::routes;
 
 use crate::books;
 use crate::books::Book;
@@ -69,12 +68,4 @@ fn host() -> String {
 
 fn port() -> String {
     env::var("ROCKET_PORT").expect("ROCKET_PORT must be set")
-}
-
-pub fn create_routes() {
-    rocket::ignite()
-        .manage(db_connection::init_pool())
-        .mount("/books",
-               routes![get_all, get, post, put, delete],
-        ).launch();
 }
