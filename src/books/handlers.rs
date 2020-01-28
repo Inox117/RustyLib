@@ -11,6 +11,15 @@ use crate::books::Book;
 use crate::db_connection;
 use crate::db_connection::DbConn;
 
+use rocket_contrib::templates::Template;
+use std::collections::HashMap;
+
+#[get("/index")]
+pub fn index() -> Template {
+    let context =  HashMap::<String, String>::new();
+    Template::render("index", &context)
+}
+
 #[get("/")]
 pub fn get_all(connection: DbConn) -> Result<Json<Vec<Book>>, Status> {
     books::repository::all(&connection)

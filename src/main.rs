@@ -11,6 +11,7 @@ extern crate serde_derive;
 
 use dotenv::dotenv;
 use rocket::routes;
+use rocket_contrib::templates::Template;
 
 mod books;
 mod schema;
@@ -23,12 +24,14 @@ fn main() {
 
 pub fn create_routes() {
     rocket::ignite()
+        .attach(Template::fairing())
         .manage(db_connection::init_pool())
         .mount("/books",
                routes![books::handlers::get_all,
                               books::handlers::get,
                               books::handlers::post,
                               books::handlers::put,
-                              books::handlers::delete],
+                              books::handlers::delete,
+                              books::handlers::index],
         ).launch();
 }
