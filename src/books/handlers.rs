@@ -14,24 +14,22 @@ use crate::db_connection::DbConn;
 use rocket_contrib::templates::Template;
 use std::collections::HashMap;
 
-#[get("/index")]
-pub fn index() -> Template {
-    let context =  HashMap::<String, String>::new();
-    Template::render("index", &context)
-}
-
 #[get("/")]
-pub fn get_all(connection: DbConn) -> Result<Json<Vec<Book>>, Status> {
-    books::repository::all(&connection)
-        .map(|books| Json(books))
-        .map_err(|error| error_status(error))
+pub fn get_all(connection: DbConn) -> Template {
+    let book_list = books::repository::all(&connection)
+        .map_err(|error| error_status(error));
+    let mut context =  HashMap::new();
+    context.insert("books", book_list.unwrap());
+    Template::render("books", context)
 }
 
 #[get("/<id>")]
-pub fn get(id: i32, connection: DbConn) -> Result<Json<Book>, Status> {
-    books::repository::get(id, &connection)
-        .map(|book| Json(book))
-        .map_err(|error| error_status(error))
+pub fn get(id: i32, connection: DbConn) -> Template {
+    let book = books::repository::get(id, &connection)
+        .map_err(|error| error_status(error));
+    let mut context = HashMap::new();
+    context.insert("book", book.unwrap());
+    Template::render("book", context)
 }
 
 #[post("/", format = "application/json", data = "<book>")]

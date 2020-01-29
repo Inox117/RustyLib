@@ -9,6 +9,7 @@ extern crate rocket_contrib;
 #[macro_use]
 extern crate serde_derive;
 
+
 use dotenv::dotenv;
 use rocket::routes;
 use rocket_contrib::templates::Template;
@@ -31,7 +32,6 @@ pub fn create_routes() {
                               books::handlers::get,
                               books::handlers::post,
                               books::handlers::put,
-                              books::handlers::delete,
-                              books::handlers::index],
+                              books::handlers::delete],
         ).launch();
 }
