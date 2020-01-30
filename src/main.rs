@@ -13,6 +13,7 @@ extern crate serde_derive;
 use dotenv::dotenv;
 use rocket::routes;
 use rocket_contrib::templates::Template;
+use rocket_contrib::serve::StaticFiles;
 
 mod books;
 mod schema;
@@ -32,6 +33,7 @@ pub fn create_routes() {
                               books::handlers::get,
                               books::handlers::post,
                               books::handlers::put,
-                              books::handlers::delete],
-        ).launch();
+                              books::handlers::delete])
+        .mount("/static", StaticFiles::from("static"))
+        .launch();
 }
