@@ -9,7 +9,6 @@ extern crate rocket_contrib;
 #[macro_use]
 extern crate serde_derive;
 
-
 use dotenv::dotenv;
 use rocket::routes;
 use rocket_contrib::templates::Template;

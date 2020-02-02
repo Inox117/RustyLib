@@ -8,7 +8,6 @@ use rocket::response::status;
 
 use crate::books;
 use crate::books::Book;
-use crate::db_connection;
 use crate::db_connection::DbConn;
 
 use rocket_contrib::templates::Template;
@@ -17,7 +16,9 @@ use std::collections::HashMap;
 #[get("/")]
 pub fn get_all(connection: DbConn) -> Template {
     let book_list = books::repository::all(&connection)
-        .map_err(|error| error_status(error));
+        .map(|book| book)
+        .map_err(|error| println!("{:?}", error));
+//    error_status(error)
     let mut context =  HashMap::new();
     context.insert("books", book_list.unwrap());
     Template::render("books", context)
@@ -58,7 +59,7 @@ pub fn delete(id: i32, connection: DbConn) -> Result<Status, Status> {
 
 fn book_created(book: Book) -> status::Created<Json<Book>> {
     status::Created(
-        format!("{host}:{port}/book/{id}", host = host(), port = port(), id = book.isbn).to_string(),
+        format!("{host}:{port}/book/{id}", host = host(), port = port(), id = book.isbn13).to_string(),
         Some(Json(book)))
 }
 

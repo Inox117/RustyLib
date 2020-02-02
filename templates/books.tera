@@ -71,7 +71,7 @@
               {% for book in books -%}
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                      <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn }}.jpg" />
+                      <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn13 }}.jpg" />
                         <div class="card-body">
                             <p class="card-text">{{ book.title }}</p>
                             <div class="d-flex justify-content-between align-items-center">
