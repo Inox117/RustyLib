@@ -41,7 +41,7 @@
     <header>
         <div class="navbar navbar-dark bg-dark shadow-sm">
             <div class="container d-flex justify-content-between">
-                <a href="#" class="navbar-brand d-flex align-items-center">
+                <a href="/books" class="navbar-brand d-flex align-items-center">
                     <svg class="bi bi-book-half-fill" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
