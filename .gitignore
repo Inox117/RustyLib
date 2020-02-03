@@ -3,3 +3,4 @@
 .env
 .idea/
 Cargo.lock
+tmp_code/
