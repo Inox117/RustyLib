@@ -1,20 +1,25 @@
 {% extends "base" %}
 
 {% block content %}
-<div class="album py-5 bg-light text-center">
-    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn13 }}.jpg" />
-    <h3>{{book.title}}</h3>
-    <p>
-        Created by {{book.author}}. <br />
-        Illustrated by {{book.illustrator}}. <br />
-        Published by {{book.publisher}}. <br />
-        Publication date {{book.publication_date}}. <br />
-        {{book.number_of_page}} pages. <br />
-        Summary : <br />
-        {{ book.summary }} <br />
+<form>
+    <div class="album py-5 bg-light text-center">
+        <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn13 }}.jpg"/>
+        <h3>{{book.title}}</h3>
+        <p>
+            Created by {{book.author}}. <br/>
+            Illustrated by {{book.illustrator}}. <br/>
+            Published by {{book.publisher}}. <br/>
+            Publication date {{book.publication_date}}. <br/>
+            {{book.number_of_page}} pages. <br/>
+            Summary : <br/>
+            {{ book.summary }} <br/>
 
-        ISBN 10 : {{ book.isbn10 }} <br />
-        ISBN 13 : {{ book.isbn13 }} <br />
-    </p>
-</div>
+            ISBN 10 : {{ book.isbn10 }} <br/>
+            ISBN 13 : {{ book.isbn13 }} <br/>
+
+        </p>
+    </div>
+    <button type="button" class="btn btn-outline-primary" disabled>Edit</button>
+    <button type="button" class="btn btn-outline-danger" onclick={{Test_func()}}>Delete</button>
+</form>
 {% endblock content %}
