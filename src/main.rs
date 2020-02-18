@@ -32,7 +32,8 @@ pub fn create_routes() {
                               books::handlers::get,
                               books::handlers::post,
                               books::handlers::put,
-                              books::handlers::delete])
+                              books::handlers::delete,
+                              books::handlers::get_adding_form])
         .mount("/static", StaticFiles::from("static"))
         .launch();
 }

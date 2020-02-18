@@ -1,0 +1,37 @@
+{% extends "base" %}
+
+{% block content %}
+<form action="/books" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" id="inputTitle" placeholder="Title">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" id="inputISBN10" placeholder="ISBN10">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" id="inputISBN13" placeholder="ISBN13">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="inputAuthor" placeholder="Author">
+        </div>
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="inputIllustrator" placeholder="Illustrator">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" id="inputPublisher" placeholder="Publisher">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" id="inputPublicationDate" placeholder="Publication Date">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="number" class="form-control" id="inputNumberOfPage" placeholder="Number of Pages">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+{% endblock content %}

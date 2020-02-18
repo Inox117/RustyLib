@@ -33,6 +33,12 @@ pub fn get(id: i32, connection: DbConn) -> Template {
     Template::render("book", context)
 }
 
+#[get("/add")]
+pub fn get_adding_form() -> Template {
+    let context:HashMap<String, String> = HashMap::new();
+    Template::render("form_add_book", context)
+}
+
 #[post("/", format = "application/json", data = "<book>")]
 pub fn post(book: Json<Book>, connection: DbConn) -> Result<status::Created<Json<Book>>, Status> {
     books::repository::insert(book.into_inner(), &connection)
