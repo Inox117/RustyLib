@@ -18,7 +18,6 @@ pub fn get_all(connection: DbConn) -> Template {
     let book_list = books::repository::all(&connection)
         .map(|book| book)
         .map_err(|error| println!("{:?}", error));
-//    error_status(error)
     let mut context =  HashMap::new();
     context.insert("books", book_list.unwrap());
     Template::render("books", context)
