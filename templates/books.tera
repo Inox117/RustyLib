@@ -6,7 +6,7 @@
         <div class="container">
             <h1>Our collections</h1>
             <p>
-                <a href="#" class="btn btn-primary my-2">Add a book</a>
+                <a class="btn btn-primary my-2" href="/books/add">Add a book</a>
                 <a href="#" class="btn btn-secondary my-2">Consult everything</a>
             </p>
         </div>

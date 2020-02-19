@@ -18,7 +18,6 @@ pub fn get_all(connection: DbConn) -> Template {
     let book_list = books::repository::all(&connection)
         .map(|book| book)
         .map_err(|error| println!("{:?}", error));
-//    error_status(error)
     let mut context =  HashMap::new();
     context.insert("books", book_list.unwrap());
     Template::render("books", context)
@@ -31,6 +30,12 @@ pub fn get(id: i32, connection: DbConn) -> Template {
     let mut context = HashMap::new();
     context.insert("book", book.unwrap());
     Template::render("book", context)
+}
+
+#[get("/add")]
+pub fn get_adding_form() -> Template {
+    let context:HashMap<String, String> = HashMap::new();
+    Template::render("form_add_book", context)
 }
 
 #[post("/", format = "application/json", data = "<book>")]
